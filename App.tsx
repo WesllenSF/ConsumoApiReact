@@ -1,18 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native';
+// In App.js in a new project
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Consumindo API com ReactNative</Text>
-    </View>
-  );
-}
+import * as React from 'react';
+import { createStaticNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+import Home from './views/home';
+
+const RootStack = createNativeStackNavigator({
+  screens: {
+    Home: Home,
   },
 });
+
+const Navigation = createStaticNavigation(RootStack);
+
+export default function App() {
+  return <Navigation />;
+}
